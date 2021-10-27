@@ -1,4 +1,4 @@
-# uuid6-py
+# seq-uuid
 
 A Python library to generate UUID version 4 and 5, based on [RFC4122](https://datatracker.ietf.org/doc/html/rfc4122)
 and version 6 based
@@ -6,7 +6,13 @@ on [RFC4122 2021 draft edition](https://datatracker.ietf.org/doc/html/draft-peab
 
 # Examples
 
-Generates UUID version 6 according to RFC4122
+```python
+import seq_uuid
+
+identifier = seq_uuid.uuid6()
+
+print(identifier)
+```
 
 ```python
 import seq_uuid
