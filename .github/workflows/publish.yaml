@@ -13,6 +13,8 @@ jobs:
           python-version: 3.9
       - name: "Install dependencies"
         run: "pip3 install pytest twine wheel"
+      - name: "Install module"
+        run: "python setup.py install"
       - name: "Test"
         run: "python3 -m pytest tests"
       - name: "Build"
