@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Publish-PyPi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: "actions/checkout@master"
+      - name: "Set up Python 3.9"
+        uses: "actions/setup-python@v1"
+        with:
+          python-version: 3.9
+      - name: "Install dependencies"
+        run: "pip3 install pytest twine wheel"
+      - name: "Test"
+        run: "python3 -m pytest tests"
+      - name: "Build"
+        run: "python3 setup.py sdist bdist_wheel"
+      - name: "Publish package"
+        uses: "pypa/gh-action-pypi-publish@release/v1"
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_UNIVERSAL_ID }}
